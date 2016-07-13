@@ -28,7 +28,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
-
+gem 'carrierwave'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
