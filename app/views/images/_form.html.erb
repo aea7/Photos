@@ -22,6 +22,14 @@
     </div>
     <%=f.error_span(:name) %>
   </div>
+
+  <div class = "form-group">
+<%= f.label 'Select category', :class => 'control-label col-lg-2' %>
+<div class="col-lg-10">
+  <%= f.collection_select(:category_id, Category.all, :id, :name, prompt: true) %>
+      </div></div>
+
+
   <div class="form-group">
     <%= f.label :picture, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -29,6 +37,8 @@
     </div>
     <%=f.error_span(:picture) %>
   </div>
+
+
 
 
   <div class="form-group">

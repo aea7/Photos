@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get '/register',to: 'welcome#regist'
-  resources :users, only: [:show] 
+  resources :users, only: [:show]
+  resources :categories,only: [:index]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

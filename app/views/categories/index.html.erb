@@ -1,0 +1,9 @@
+
+<% if @categories %>
+<% @categories.each do |f| %>
+
+<h3>   <%= f.name %> </h3>
+<% end %>
+ <% else %>
+ <h1> <%= @category.name %> </h1>
+ <% end %>
