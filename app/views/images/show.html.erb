@@ -7,8 +7,8 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @image.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:picture) %>:</strong></dt>
-  <%= image_tag @image.picture.url if @image.picture %>
-  <% # —(@image.picture.url, size: "300x300") %>
+  <%= image_tag @image.picture.url, size: "300x300" if @image.picture %>
+  <%= image_tag @image.picture.thumb.url %>
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
   <dd><%= @image.user_id %></dd>
 </dl>
