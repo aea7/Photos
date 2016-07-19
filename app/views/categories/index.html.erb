@@ -1,9 +1,37 @@
 
-<% if @categories %>
-<% @categories.each do |f| %>
-
-<h3>   <%= f.name %> </h3>
-<% end %>
- <% else %>
- <h1> <%= @category.name %> </h1>
- <% end %>
+  <div class="page-header">
+  <h1> <%= @category.name %> </h1>
+  </div>
+  <table class="table table-responsive table-striped">
+    <thead>
+      <div class="form-group">
+      <%= form_tag url_for(:controller => 'categories', :action => 'index'), :method => 'get' do %>
+  <div class="col-xs-8">
+        <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), prompt: "All",class: " form-control" %>
+  </div> <div class="col-xs-4">
+        <%= submit_tag "See Photos",class: "form-control",style: "color:#f00;text-align:center;font-size:1.3em"%> </div>
+      <% end %>
+    </div>
+    </thead>
+    <tbody>
+      <% @category.images.each do |image| %>
+        <tr>
+          <td><%= image_tag(image.user.avatar.thumb.url) %></td>
+          <td><%= image.name %></td>
+          <td><%= image.picture.index.url %> </td>
+          <td> <%= "Posted" %> <%= (Time.now - image.created_at).to_i/3600%> <%= "hours ago" %></td>
+          <td>
+            <% if current_user == image.user %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_image_path(image), :class => 'btn btn-default btn-xs' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        image_path(image),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-xs btn-danger' %>
+                        <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

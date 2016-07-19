@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
   def index
     if(params[:id].empty?)
-      @categories = Category.all
+      redirect_to images_path
     else
       @category = Category.find(params[:id])
     end

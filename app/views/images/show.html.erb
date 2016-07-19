@@ -24,10 +24,3 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-
-<%= form_tag url_for(:controller => 'categories', :action => 'index'), :method => 'get' do %>
-  <%= label_tag "Include columns" %> <br>
-  <%= select_tag "id", options_from_collection_for_select(Category.all, "id", "name"), prompt: "See All" %>
-  <%= label_tag "First Name" %><br>
-  <%= submit_tag "See Photos"%>
-<% end %>
