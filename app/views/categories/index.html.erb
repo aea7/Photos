@@ -13,25 +13,30 @@
       <% end %>
     </div>
     </thead>
-    <tbody>
-      <% @category.images.each do |image| %>
-        <tr>
-          <td><%= image_tag(image.user.avatar.thumb.url) %></td>
-          <td><%= image.name %></td>
-          <td><%= image.picture.index.url %> </td>
-          <td> <%= "Posted" %> <%= (Time.now - image.created_at).to_i/3600%> <%= "hours ago" %></td>
-          <td>
-            <% if current_user == image.user %>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_image_path(image), :class => 'btn btn-default btn-xs' %>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        image_path(image),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                        :class => 'btn btn-xs btn-danger' %>
-                        <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
   </table>
+
+  <% @category.images.each do |image| %>
+  <div style="width:600px;margin:0 auto">
+  <div >
+    <%= image_tag image.picture.index.url %>
+      </div>
+      <div>
+      </br>
+        <%= image.name + "," %>
+        <%= image.user.email+ "," %>
+        <%= image.category.name+ "," %>
+        <%= image_tag(image.user.avatar.thumb.url) %>
+        <%= "Posted" %> <%= (Time.now - image.created_at).to_i/3600%> <%= "hours ago" %>
+
+          <% if current_user == image.user %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_image_path(image), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      image_path(image),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+                      <% end %>
+                      <% end %>
+  </div>
+  </div>
