@@ -29,6 +29,14 @@
         <%= image_tag(image.user.avatar.thumb.url) %>
         <%= "Posted" %> <%= (Time.now - image.created_at).to_i/3600%> <%= "hours ago" %>
 
+        <% if current_user.voted_up_on? image %>
+        <%= link_to "UNLIKE",dislike_image_path(image), method: :put %>
+        <%= image.get_upvotes.size %>
+        <% else %>
+        <%= link_to "LIKE",like_image_path(image), method: :put %>
+        <%= image.get_upvotes.size %>
+        <% end %>
+
           <% if current_user == image.user %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_image_path(image), :class => 'btn btn-default btn-xs' %>

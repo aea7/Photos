@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :images
+  resources :images do
+    member do
+      put "like", to: "images#like"
+      put "dislike", to: "images#unlike"
+    end
+  end
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -9,6 +14,7 @@ Rails.application.routes.draw do
   get '/register',to: 'welcome#regist'
   resources :users, only: [:show]
   resources :categories,only: [:index]
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
