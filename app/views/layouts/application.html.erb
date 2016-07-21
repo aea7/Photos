@@ -51,6 +51,10 @@
             <% if user_signed_in? %>
             <li><%= link_to "Profile", user_path(current_user)   %></li>
             <li><%= link_to "Upload Image", new_image_path   %></li>
+
+            <% if current_controller?("users") %>
+            <% end %>
+
             <% end %>
 
           </ul>

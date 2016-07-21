@@ -12,7 +12,16 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get '/register',to: 'welcome#regist'
-  resources :users, only: [:show]
+
+  resources :users, only: [:show] do
+    member do
+      get "friend", to: "users#friend"
+      get "unfriend", to: "users#unfriend"
+      get "followers",to: "users#followers"
+      get "following",to: "users#following"
+    end
+  end
+
   resources :categories,only: [:index]
 
 

@@ -24,7 +24,7 @@
       <div>
       </br>
         <%= image.name + "," %>
-        <%= image.user.email+ "," %>
+        <%= link_to (image.user.email+ ","),user_path(image.user) %>
         <%= image.category.name+ "," %>
         <%= image_tag(image.user.avatar.thumb.url) %>
         <%= "Posted" %> <%= (Time.now - image.created_at).to_i/3600%> <%= "hours ago" %>

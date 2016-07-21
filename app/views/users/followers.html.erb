@@ -1,0 +1,25 @@
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Profile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @followers.each do |f| %>
+      <tr class="info">
+      <div style="width:600px;margin:0 auto">
+          <td> <div style= "font-size:1.5em;color:#b00">
+            <%= f.email %>
+          </div> </td>
+          <td>
+          <div>
+            <%= link_to "Show Profile",user_path(f),class:"btn btn-default",style:"color:#00b;margin-left:10px" %>
+          </div> </td>
+          </div>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
