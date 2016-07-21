@@ -32,6 +32,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'popular'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
