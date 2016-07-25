@@ -1,7 +1,7 @@
 APP_PATH = '/home/rails/photos'
 worker_processes 4
 working_directory APP_PATH + '/current'
-listen APP_PATH + '/current/tmp/sockets/iven.sock', backlog: 64
+listen APP_PATH + '/current/tmp/sockets/photos.sock', backlog: 64
 timeout 60
 stderr_path APP_PATH + '/shared/log/unicorn.log'
 stdout_path APP_PATH + '/shared/log/unicorn.log'
