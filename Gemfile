@@ -34,6 +34,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'popular'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'sshkit-sudo'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -51,6 +52,12 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'capistrano', '~> 3.1', require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails',   '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-faster-assets', '~> 1.0'
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
