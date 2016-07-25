@@ -1,3 +1,12 @@
+server '178.62.248.83', user: 'rails', roles: [:app, :db, :web], my_property: :my_value
+
+set :branch, :master
+set :deploy_to, '/home/rails/photos'
+# set :unicorn_env, 'production'
+
+role :app, %w{rails@178.62.248.83}
+role :web, %w{rails@178.62.248.83}
+role :db,  %w{rails@178.62.248.83}
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
