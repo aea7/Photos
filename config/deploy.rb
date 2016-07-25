@@ -16,14 +16,14 @@ set :use_sudo, false
 set :bundle_binstubs, nil
 set :keep_releases, 5
 
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/mongoid.yml', 'config/config.yml')
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'firmwares', 'configurations', 'public/dashboard/common_assets/img/tenantLogos', 'reports/report_excel','reports/uptime_excel',  'reports/scheduled_report_excel','public/dashboard/common_assets/img/accountLogos', 'public/dashboard/common_assets/img/uludagLogos', 'public/uludag')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 ## unicorn config
-pid_file = '/home/deployer/iven_product/shared/tmp/pids/unicorn.pid'
+pid_file = '/home/rails/photos/shared/tmp/pids/unicorn.pid'
 stop_command = "sudo kill -s QUIT `cat #{pid_file}`"
 
 namespace :deploy do
@@ -39,8 +39,8 @@ namespace :deploy do
   desc 'Restart nginx with unicorn'
   task :restart do
     on roles(:all) do
-      execute! 'chmod +x /home/deployer/iven_product/current/config/unicorn-init.sh'
-      execute! :sudo, 'ln -sf /home/deployer/iven_product/current/config/unicorn-init.sh /etc/init.d/unicorn'
+      execute! 'chmod +x /home/rails/photos/current/config/unicorn-init.sh'
+      execute! :sudo, 'ln -sf /home/rails/photos/current/config/unicorn-init.sh /etc/init.d/unicorn'
       execute! "if [[ -f #{pid_file} ]]; then #{stop_command}; fi"
       sleep 2
       execute! :sudo, :service, :unicorn, :restart
