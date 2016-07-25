@@ -1,8 +1,8 @@
 CarrierWave.configure do |config|
 config.fog_credentials = {
 :provider => 'AWS',
-:aws_access_key_id => 'AKIAJRWCT5GH2S4UZEXQ',
-:aws_secret_access_key => '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'
+:aws_access_key_id => 'ENV['S3_ACCESS_KEY'],
+:aws_secret_access_key => ENV['S3_SECRET_KEY']
 }
-config.fog_directory = 'aak-rails'
+config.fog_directory = ENV['S3_BUCKET']
 end
